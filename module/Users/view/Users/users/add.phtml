@@ -1,0 +1,22 @@
+<h1>Adding User</h1>
+
+<form action="<?php echo $this->url('users',array('action'=>'add'));?>" method="post">
+	<fieldset>
+		<p><label>Username:</label></p>
+		<p><input type="text" name="username" /></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><label>Password:</label></p>
+		<p><input type="text" name="password"/></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><label>Email:</label></p>
+		<p><input type="text" name="email"/></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><button type="submit">Submit</button></p>
+	</fieldset>
+</form>

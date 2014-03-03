@@ -1,0 +1,16 @@
+<h1>News</h1>
+
+<h3><a href="<?php echo $this->url('news',array('action'=>'add'));?>">Add New</a></h3>
+<table border=1 cellspacing=0>
+<?php
+	foreach($news as $post): 
+?>
+	<tr>
+		<td><a href="<?php echo $this->url('news',array('action'=>'detail','id'=>$post['news_id']));?>"><?php echo $post['title'];?></a></td>
+		<td><a href="<?php echo $this->url('news',array('action'=>'edit','id'=>$post['news_id']));?>">Edit</td>
+		<td><a href="<?php echo $this->url('news',array('action'=>'delete','id'=>$post['news_id']));?>">Delete</td>
+	</tr>
+<?php
+	endforeach; 
+?>
+</table>

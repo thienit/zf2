@@ -1,0 +1,15 @@
+<h1>User List</h1>
+
+<h3><a href="<?php echo $this->url('users',array('action'=>'add'));?>">*** Add a User ***</a></h3>
+<table border=1 cellspacing=0>
+<?php
+	foreach($users as $user): 
+?>
+	<tr>
+		<td><a href="<?php echo $this->url('users',array('action'=>'detail','id'=>$user['id']));?>"><?php echo $user['fullname'];?></a></td>
+		<td><?php echo $user['email'];?></td>
+	</tr>
+<?php
+	endforeach; 
+?>
+</table>

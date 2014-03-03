@@ -1,0 +1,78 @@
+<style>
+	#news-form input,
+	#news-form textarea
+	{
+			width: 80%;
+	}
+	#news-form textarea[name="content_summary"]
+	{
+			height: 100px;
+	}
+	
+	#news-form textarea[name="content_detail"]
+	{
+			height: 400px;
+	}
+	#news-form img{
+		width: 100px;
+	}
+</style>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="<?php echo $this->basepath('public/js')?>/ckeditor/ckeditor.js"></script>
+<script src="<?php echo $this->basepath('public/js')?>/ckeditor/adapters/jquery.js"></script>
+<script>
+$( document ).ready( function() {
+	$( 'textarea#editor1' ).ckeditor();
+
+	// handle change featured image
+	$('#featured_image').change(function()
+	{
+		$('#view_featured_image').attr('src', '');
+		previewImage(this);
+	});
+	
+	function previewImage(input)
+	{
+		if(input.files && input.files[0])
+		{
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#view_featured_image').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+} );
+</script>
+
+<form id="news-form" action="<?php echo $this->url('news',array('action'=>'add'));?>" method="post" enctype="multipart/form-data">
+	<h1>Adding Post</h1>
+	<fieldset>
+		<p><label>Title:</label></p>
+		<p><input type="text" name="title" /></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><label>Summary:</label></p>
+		<p><textarea name="content_summary"></textarea></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><label>Content:</label></p>
+		<p><textarea id="editor1" name="content_detail"></textarea></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><label>Featured images:</label></p>
+		<p><img id="view_featured_image" /></p>
+		<p><input id="featured_image"  type="file" name="images" accept="image/*"/></p>
+	</fieldset>
+	
+	<fieldset>
+		<p>
+			<button type="submit" name="submit">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="submit" name="cancel">Cancel</button>
+		</p>
+	</fieldset>
+</form>
