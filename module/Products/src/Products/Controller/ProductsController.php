@@ -20,5 +20,8 @@ class ProductsController extends AbstractActionController
 		}
 		return $this->productsTable;
 	}
+	
+	
+	
 }
 

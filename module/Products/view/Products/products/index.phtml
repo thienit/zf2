@@ -1,3 +1,105 @@
-<?php
-print_r($products); 
-?>
+<style>
+ul{
+	list-style: none;
+}
+#product-wrapper {
+	overflow: hidden;
+	background-color:#FAFAFA;
+}
+
+#categories{
+	float: left;
+	width: 240px;
+}
+
+.product{
+	width: 180px;
+	height: 300px;
+	float: left;
+	border: 1px solid #E0E0E0;
+	border-right: none;
+	padding: 10px;
+	margin-bottom: 40px;
+}
+.product img{
+	width: 160px;
+	height: 220px;
+}
+
+.product h5{
+	color:#6E6E6E;
+	width: 160px;
+	height: 16px;
+	line-height: 16px;
+	overflow: hidden;
+}
+.product h5:hover{
+	color: #262626;
+}
+.product h5 a{
+	color: inherit;
+	text-decoration: none;
+	font-style: italic;
+}
+
+.product .more-link{
+	margin-left: 30px;
+	color: #FFFFFF;
+	background: #1C1C1C;
+	border: none;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+.product .more-link:hover{
+	background: #6E6E6E; 
+}
+
+.product .price{
+	font-size: 14px;
+	font-weight: bold;
+	color: #212121;
+}
+
+#categories a{
+	text-decoration: none;
+	color:#6E6E6E;
+}
+
+#categories a:hover{
+	color: #262626;
+}
+</style>
+
+<div id="main-content">
+	<div id="categories">
+		<ul>
+			<li><a href="1">Quần</a></li>
+			<li><a href="2">Áo</a></li>
+			<li><a href="3">Giày</a></li>
+			<li><a href="4">Dép</a></li>
+			<li><a href="5">Đầm</a></li>
+			<li><a href="6">Đầm công sở</a></li>
+			<li><a href="7">Đầm dạ hội</a></li>
+			<li><a href="8">Đầm dạo phố</a></li>
+			<li><a href="9">Bộ</a></li>
+		</ul>
+	</div>
+	<div id="product-wrapper">
+	<?php
+	$count = 0;
+	foreach ($products as $p):
+	$count ++;
+	?>
+		<div class="product">
+			<a class="illus"><img src="<?php echo $this->basepath('public/img/hinh_san_pham/').$p->image;?>" /></a>
+			<h5><a href="#"><?php echo $p->product_name;?></a></h5>
+			<p class="price"><?php echo $p->price;?>
+				<a class="more-link" href="">Chi tiết</a>
+			</p>
+		</div>
+	
+	<?php
+	endforeach; 
+	?>
+	</div>
+</div>
