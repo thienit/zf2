@@ -41,7 +41,7 @@ return array(
  */
 	'router' => array(
         'routes' => array(       
-                    'products' => array(
+                    'sanpham' => array(
                         'type'    => 'Segment',
                         'options' => array(
                             'route'    => '/sanpham[/:action][/:id]',

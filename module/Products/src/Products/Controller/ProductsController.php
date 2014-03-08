@@ -2,6 +2,7 @@
 namespace Products\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Products\Form\ProductsForm;
 
 class ProductsController extends AbstractActionController
 {
@@ -19,6 +20,12 @@ class ProductsController extends AbstractActionController
 			$this->productsTable = $sm->get('Products\Model\ProductsTable');
 		}
 		return $this->productsTable;
+	}
+	
+	public function addAction()
+	{
+		$form = new ProductsForm();
+		return new ViewModel(array('form'=>$form));
 	}
 	
 	

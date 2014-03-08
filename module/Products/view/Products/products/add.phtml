@@ -1,0 +1,13 @@
+<?php 
+$form=$this->form;
+$form->setAttribute('action',$this->url('sanpham',array('action'=>'add')));
+$form->prepare();
+echo $this->form()->openTag($form);
+	echo $this->formLabel($form->get('product_name'));
+	echo $this->formText($form->get('product_name'));
+	echo $this->formLabel($form->get('alias'));
+	echo $this->formText($form->get('alias'));
+	echo $this->formLabel($form->get('alias'));
+	echo $this->formText($form->get('alias'));
+	echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag($form);
