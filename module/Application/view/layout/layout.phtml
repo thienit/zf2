@@ -12,9 +12,14 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/public/css/reset.css')
+                        ->prependStylesheet($this->basePath() . '/public/css/960.css')
+                        ->prependStylesheet($this->basePath() . '/public/css/text.css')
                         ->prependStylesheet($this->basePath() . '/public/css/style.css')
                         ->prependStylesheet($this->basePath() . '/public/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/public/css/bootstrap.min.css') ?>
+                        ->prependStylesheet($this->basePath() . '/public/css/bootstrap.min.css') 
+                        ?>
+
 
         <!-- Scripts -->
         <?php echo $this->headScript()
@@ -26,25 +31,69 @@
 
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('/public/img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
+       
+        <header>
+            <div class="container_16">
+                <div class="grid_16 top-nav">
+                    <a class="lang" href="#"><img src="<?php echo $this->basePath('/public/img')?>/vn.png"/></a>
+                    <a class="lang" href="#"><img src="<?php echo $this->basePath('/public/img')?>/uk.png"/></a>
+                    <span class="hotline">Hotline:<b>0123 456 789</b></span>
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                <div class="grid_4 logo">
+                    <a href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('/public/img/fashion-logo.png') ?>"</a>
+                </div>
+                <div class="grid_6 search_box">
+                    <input type="text" placeholder="search" />
+                </div>
+                <div class="grid_6" align="right">
+                    <button id="cart">
+                        Cart (0)
+                    </button>
+                    <div class="account">
+                        <a class="signin" href="#">Sign in</a>
+                        <a class="signup" href="#">Sign up</a>
+                    </div>
+                </div>
+            </div><!--/container_16-->
+        </header>
+        <div id="main-menu">
+            <div class="container_16">
+                <div class="grid_16">
+                    <ul>
+                        <li><a href="">Women</a>
+                            <ul>
+                                <li><a href="">Donec lobortis</a></li>
+                                <li><a href="">pulvinar laoreet</a>
+                                    <ul>
+                                        <li><a href="">Donec lobortis</a></li>
+                                        <li><a href="">pulvinar laoreet</a></li>
+                                        <li><a href=""> Nullam vehicula ligula</a></li>
+                                        <li><a href="">Vestibulum vel neque</a></li>
+                                        <li><a href="">Maecenas felis turpis</a></li>
+                                        <li><a href="">Suspendisse accumsan</a></li>
+                                        <li><a href="">Duis quis ullamcorper</a></li>
+                                        <li><a href="">Nulla varius accumsan nisl</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href=""> Nullam vehicula ligula</a></li>
+                                <li><a href="">Vestibulum vel neque</a></li>
+                                <li><a href="">Maecenas felis turpis</a></li>
+                                <li><a href="">Suspendisse accumsan</a></li>
+                                <li><a href="">Duis quis ullamcorper</a></li>
+                                <li><a href="">Nulla varius accumsan nisl</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Men</a></li>
+                        <li><a href="">Shoes</a></li>
+                        <li><a href="">Skirt</a></li>
                     </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
+                </div>
+            </div><!--/container_16-->
+        </div><!--/main-menu-->
         <div class="container">
+            <div class="container_16">
             <?php echo $this->content; ?>
+            </div><!--/container_16-->
             <hr>
             <footer>
                 <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
