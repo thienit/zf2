@@ -25,7 +25,25 @@ class ProductsController extends AbstractActionController
 	public function addAction()
 	{
 		$form = new ProductsForm();
+		$request = $this->getRequest();
+		
+		if($request->isPost())
+		{
+			$data = array_merge_recursive($request->getPost()->toArray(), $request->getFiles()->toArray());
+			
+			$form->setData($data);
+			if($form->isValid())
+			{
+				echo "du lieu hop cmn le";
+			}
+			else
+			{
+				echo "du lieu ko hop le";
+			}
+		}
+		
 		return new ViewModel(array('form'=>$form));
+		
 	}
 	
 	

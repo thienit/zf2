@@ -1,13 +1,95 @@
+<style>
+	.inputform fieldset
+	{
+		margin-top: 20px;
+	}
+	.inputform input[type='text'],
+	.inputform textarea
+	{
+			width: 80%;
+	}
+	.inputform textarea[name="content_summary"]
+	{
+			height: 100px;
+	}
+	
+	.inputform textarea[name="content_detail"]
+	{
+			height: 400px;
+	}
+	.inputform img{
+		width: 100px;
+	}
+</style>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="<?php echo $this->basepath('public/js')?>/ckeditor/ckeditor.js"></script>
+<script src="<?php echo $this->basepath('public/js')?>/ckeditor/adapters/jquery.js"></script>
+<script>
+$( document ).ready( function() {
+	$( 'textarea#editor1' ).ckeditor();
+
+	// handle change featured image
+	$('#featured_image').change(function()
+	{
+		$('#view_featured_image').attr('src', '');
+		previewImage(this);
+	});
+	
+	function previewImage(input)
+	{
+		if(input.files && input.files[0])
+		{
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#view_featured_image').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+} );
+</script>
+<div class="inputform">
 <?php 
 $form=$this->form;
 $form->setAttribute('action',$this->url('sanpham',array('action'=>'add')));
 $form->prepare();
 echo $this->form()->openTag($form);
-	echo $this->formLabel($form->get('product_name'));
-	echo $this->formText($form->get('product_name'));
-	echo $this->formLabel($form->get('alias'));
-	echo $this->formText($form->get('alias'));
-	echo $this->formLabel($form->get('alias'));
-	echo $this->formText($form->get('alias'));
-	echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag($form);
+?>
+	<h1>Add Products</h1>
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('product_name'));?></p>
+		<p><?php echo $this->formText($form->get('product_name'));?></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('alias'))?></p>
+		<p><?php echo $this->formText($form->get('alias'));?></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('info'))?></p>
+		<p><?php echo $this->formTextArea($form->get('info'));?></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('price'))?></p>
+		<p><?php echo $this->formText($form->get('price'));?></p>
+	</fieldset>
+	
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('image'))?></p>
+		<p><img id="view_featured_image" /></p>
+		<p><?php echo $this->formFile($form->get('image')); ?></p>
+	</fieldset>
+	
+	<fieldset>
+		<p>
+			<?php echo $this->formSubmit($form->get('submit'));?>&nbsp;&nbsp;&nbsp;&nbsp;
+			<?php echo $this->formSubmit($form->get('cancel'));?>
+		</p>
+	</fieldset>
+<?php
+echo $this->form()->closeTag($form); 
+?>
+</div>
