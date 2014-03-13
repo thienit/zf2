@@ -8,37 +8,6 @@
  */
 
 return array(
-/*
-    'router' => array(
-        'routes' => array(
-            'news' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/news',
-                    'defaults' => array(
-                        'controller' => 'News\Controller\news',
-                        'action'     => 'index',
-                    ),
-                ),
-				'may_terminate' => true,
-				'child_routes' => array(
-					'default' => array(
-						'type'    => 'Segment',
-						'options' => array(
-							'route'    => '/[:action][/:id]',
-							'constraints' => array(
-								'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-								'id'     => '[0-9]+',
-							),
-							'defaults' => array(
-							),
-						),
-					),
-				),
-            ),
-        ),
-    ),
- */
 	'router' => array(
         'routes' => array(       
                     'sanpham' => array(
@@ -50,16 +19,17 @@ return array(
                             	'id'     => '[0-9]*'
                             ),
                             'defaults' => array(
-                            	'controller' => 'products\Controller\Products',
+                            	'controller' => 'ProductGroups\Controller\ProductGroups',
                             	'action'     => 'index',                            	
                             ),
                         ),
                     ),
-                    ),
+                ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'Products\Controller\products' => 'Products\Controller\ProductsController',
+            'Products\Controller\Products' => 'Products\Controller\ProductsController',
+            'ProductGroups\Controller\ProductGroups' => ' ProductGroups\Controller\ProductGroupsController',
         ),
     ),
     'view_manager' => array(

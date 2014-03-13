@@ -37,6 +37,18 @@ class Module{
 							$resultSetPrototype = new ResultSet();
 							$resultSetPrototype->setArrayObjectPrototype(new Products());
 							return new TableGateway('product', $dbAdapter, null, $resultSetPrototype);
+						},
+						
+						'ProductGroups\Model\ProductGroupsTable' => function($sm) {
+							$tableGateway = $sm->get('ProductGroupsTableGageway');
+							$table = new ProductGroups ($tableGateway);
+							return $table;
+						},
+						'ProductGroupsTableGageway' => function ($sm) {
+							$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+							$resultSetPrototype = new ResultSet();
+							$resultSetPrototype->setArrayObjectPrototype(new ProductGroups());
+							return new TableGateway('product_groups', $dbAdapter, null, $resultSetPrototype);
 						}
 				)
 		);
