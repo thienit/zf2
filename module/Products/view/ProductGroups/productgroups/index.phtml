@@ -1,0 +1,36 @@
+<div class="cat-block">
+	<div class="block-title">
+		<h3>Women</h3>
+		<div class="cat-menu">
+			<ul>
+				<li><a href="">Donec lobortis</a></li>
+				<li><a href="">pulvinar laoreet</a></li>
+				<li><a href="">Nullam vehicula ligula</a></li>
+				<li><a href="">Vestibulum vel neque</a></li>
+				<li><a href="">Maecenas felis turpis</a></li>
+			</ul>
+		</div>
+	</div><!--block-title-->
+
+	<div class="cat-products">
+	<?php
+	$count = 0;
+	foreach ($products as $p):
+		if($count%4==0) echo '<div class="clear"></div>';
+	?>
+		<div class="product-item <?php if($count%4==0) echo 'row-first';?>">
+			<a class="product-img" href="">
+				<img src="<?php echo $this->basepath('public/img/hinh_san_pham/').$p->image;?>"/>
+			</a>
+			<a class="product-name" href=""><?php echo $p->product_name;?></a>
+			<div class="product-price">
+				<span class="price"><?php echo $p->price;?> đ</span>
+			</div>
+		</div><!--/product-item-->
+	<?php
+	$count ++;
+	endforeach;
+	?>
+		<div class="clear"></div>
+	</div><!--/cat-products-->
+</div><!--/cat-block-->

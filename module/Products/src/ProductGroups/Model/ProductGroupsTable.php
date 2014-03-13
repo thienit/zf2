@@ -1,6 +1,7 @@
 <?php
 namespace ProductGroups\Model;
 use Zend\Db\TableGateway\TableGateway;
+use Products\Model\ProductsTable;
 class ProductGroupsTable extends TableGateway
 {
 	protected $tableGateway;
@@ -15,16 +16,9 @@ class ProductGroupsTable extends TableGateway
 		return $resultSet;
 	}
 	
-	public function getProductGroups($id)
+	public function getProducts($groupId)
 	{
-		$id = (int) id;
-		$rowset = $this->tableGateway->select(array('id' => $id));
-		$row = $rowset->current();
-		if (!$row) 
-		{
-			throw new \Exception("Could not find now $id");
-		}
-		return $row;
+		return getProductsWithGroup($groupId);
 	}
 }
 

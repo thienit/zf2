@@ -27,7 +27,8 @@ class ProductsTable extends TableGateway
 		return $row;
 	}
 	
-	public function getProductsWithGroup($groupId) {
+	public function getProductsWithGroup($groupId)
+	{
 		$resultSet = $this->tableGateway->select(array('group_id' =>$groupId));
 		return $resultSet;
 	}

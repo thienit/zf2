@@ -1,0 +1,41 @@
+<?php $form=$this->form;
+$form->setAttribute('action',$this->url('users',array('action'=>'login')));
+$form->prepare();
+echo $this->form()->openTag($form);?>
+ <style type="text/css">
+	.tieude{
+		font-weight:bold;
+		text-align:center;
+		background-color:#232159;
+		color:white;
+	}
+	
+</style>
+ 
+<table align='center' width=400px cellpadding=5px; >
+	<tr>
+		<td></td>
+	</tr>
+	<tr>
+		<td colspan=2 class="tieude">LOGIN</td>
+	</tr>
+	<tr>
+		<td width="150"><?php echo $this->formLabel($form->get('username'));?></td>
+		<td><?php echo $this->formText($form->get('username'));
+			echo $this->formelementerrors($form->get('username'));?></td>
+	</tr>
+	<tr>
+		<td><?php echo $this->formLabel($form->get('password'));?></td>
+		<td><?php echo $this->formPassword($form->get('password'));
+			echo $this->formelementerrors($form->get('password'));?></td>
+	</tr>
+	<tr>
+		<td><?php echo $this->formLabel($form->get('captcha'));?></td>
+		<td><?php echo $this->formCaptcha($form->get('captcha'));?></tr>
+	<tr>
+		<td align='center' colspan=2>
+			<?php echo $this->formSubmit($form->get('submit'));?>
+		</td>
+	</tr>
+</table>
+<?php echo $this->form()->closeTag($form);?>

@@ -46,6 +46,11 @@ class ProductsController extends AbstractActionController
 		
 	}
 	
+	public function showProductsAction(){
+		
+		
+	}
+	
 	
 	
 }

@@ -1,16 +1,27 @@
 <?php
-namespace Products\Controller;
+namespace ProductGroups\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Products\Form\ProductsForm;
 
-class ProductsController extends AbstractActionController
+class ProductGroupsController extends AbstractActionController
 {
+	protected $productGroupsTable;
 	protected $productsTable;
+
 	public function indexAction()
 	{
+		$productGroups = $this->getProductGroupsTable()->fetchAll();
 		$products = $this-> getProductsTable()->fetchAll();
-		return new ViewModel(array('products'=>$products));
+		return new ViewModel(array('productGroups'=>$productGroups,'products'=>$products));
+	}
+
+	public function getProductGroupsTable()
+	{
+		if(!$this->productGroupsTable){
+			$sm = $this->getServiceLocator();
+			$this->productGroupsTable = $sm->get('ProductGroups\Model\ProductGroupsTable');
+		}
+		return $this->productGroupsTable;
 	}
 	
 	public function getProductsTable()
@@ -21,32 +32,5 @@ class ProductsController extends AbstractActionController
 		}
 		return $this->productsTable;
 	}
-	
-	public function addAction()
-	{
-		$form = new ProductsForm();
-		$request = $this->getRequest();
-		
-		if($request->isPost())
-		{
-			$data = array_merge_recursive($request->getPost()->toArray(), $request->getFiles()->toArray());
-			
-			$form->setData($data);
-			if($form->isValid())
-			{
-				echo "du lieu hop cmn le";
-			}
-			else
-			{
-				echo "du lieu ko hop le";
-			}
-		}
-		
-		return new ViewModel(array('form'=>$form));
-		
-	}
-	
-	
-	
 }
 

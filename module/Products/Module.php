@@ -1,12 +1,15 @@
 <?php 
 namespace Products;
 
+use ProductGroups\Model\ProductGroupsTable;
+
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 use Products\Model\Products;
 use Products\Model\ProductsTable;
+use Products\Model\ProductGroups;
 
 class Module{
 	
@@ -41,7 +44,7 @@ class Module{
 						
 						'ProductGroups\Model\ProductGroupsTable' => function($sm) {
 							$tableGateway = $sm->get('ProductGroupsTableGageway');
-							$table = new ProductGroups ($tableGateway);
+							$table = new ProductGroupsTable($tableGateway) ;
 							return $table;
 						},
 						'ProductGroupsTableGageway' => function ($sm) {
