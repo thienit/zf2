@@ -10,20 +10,42 @@
 return array(
 	'router' => array(
         'routes' => array(       
-                    'sanpham' => array(
+                    'product' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/sanpham[/:action][/:id]',
+                            'route'    => '/sanpham[/:id].html',
                             'constraints' => array(
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            	'id'     => '[0-9]*'
-                            ),
-                            'defaults' => array(
-                            	'controller' => 'ProductGroups\Controller\ProductGroups',
-                            	'action'     => 'index',                            	
+                                'id'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                         ),
                     ),
+
+                    'product_groups' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/sanpham[/:id]',
+                            'constraints' => array(
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'     => '[0-9]*'
+                            ),
+                            'defaults' => array(
+                                'controller' => 'ProductGroups\Controller\ProductGroups',
+                                'action'     => 'index',                                
+                            ),
+                        ),
+                    ),
+
+                    'manage-product' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/admin/sanpham[/:action][/:id]',
+                            'constraints' => array(
+                                'action'    => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id'             => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                        ),
+                    ),
+
                 ),
     ),
     'controllers' => array(
