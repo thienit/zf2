@@ -34,24 +34,24 @@
        
         <header>
             <div class="container_16">
-                <div class="grid_16 top-nav">
+                <!-- <div class="grid_16 top-nav">
                     <a class="lang" href="#"><img src="<?php echo $this->basePath('/public/img')?>/vn.png"/></a>
                     <a class="lang" href="#"><img src="<?php echo $this->basePath('/public/img')?>/uk.png"/></a>
                     <span class="hotline">Hotline:<b>0123 456 789</b></span>
-                </div>
+                </div> -->
                 <div class="grid_4 logo">
-                    <a href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('/public/img/fashion-logo.png') ?>"</a>
+                    <a href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('/public/img/fashion-logo.png') ?>"/></a>
                 </div>
                 <div class="grid_6 search_box">
                     <input type="text" placeholder="search" />
                 </div>
-                <div class="grid_6" align="right">
-                    <button id="cart">
-                        Cart (0)
-                    </button>
+                <div class="grid_6 right_col">
                     <div class="account">
                         <a class="signin" href="#">Sign in</a>
                         <a class="signup" href="#">Sign up</a>
+                    </div>
+                    <div class="cart_box">
+                        Giỏ hàng <b class="quantity">0</b>
                     </div>
                 </div>
             </div><!--/container_16-->
