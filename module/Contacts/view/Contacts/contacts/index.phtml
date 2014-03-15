@@ -1,0 +1,79 @@
+<style>
+	.inputform fieldset
+	{
+		margin-top: 20px;
+	}
+	.inputform input[type='text'],
+	.inputform textarea
+	{
+			width: 60%;
+			border: 1px solid $d8d8d8;
+	}
+	.inputform input[name="captcha[input]"]
+	{
+		width: 150px;
+	}
+	.inputform textarea[name="content"]
+	{
+			height: 100px;
+	}
+	.inputform img{
+		width: 100px;
+	}
+</style>
+
+<?php
+	require_once('ban_do.phtml');
+?>
+<br>
+<h1>Contact Us</h1>
+<div class="inputform">
+<?php 
+$form=$this->form;
+$form->setAttribute('action',$this->url('contacts'));
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('name'));?></p>
+		<p><?php echo $this->formText($form->get('name'));?></p>
+			<?php echo $this->formelementerrors($form->get('name'))?>
+	</fieldset>
+	
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('email'))?></p>
+		<p><?php echo $this->formText($form->get('email'));?></p>
+			<?php echo $this->formelementerrors($form->get('email'))?>
+	</fieldset>
+	
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('content'))?></p>
+		<p><?php echo $this->formTextArea($form->get('content'));?></p>
+		<?php echo $this->formelementerrors($form->get('content'))?>
+	</fieldset>
+	
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('attachment'))?></p>
+		<p><?php echo $this->formTextArea($form->get('attachment'));?></p>
+		<?php echo $this->formelementerrors($form->get('attachment'))?>
+	</fieldset>
+	
+	<fieldset>
+		<p><?php echo $this->formLabel($form->get('captcha'))?></p>
+		<p><?php echo $this->formCaptcha($form->get('captcha'))?></p>
+		<?php
+			$msg = $form->getMessage();
+			if(isset($msg['captcha']['badCaptcha'])
+				echo "<ul><li>Sai ma xac thuc</li></ul>";
+		?>
+	</fieldset>
+		
+	<fieldset>
+		<p>
+			<?php echo $this->formSubmit($form->get('submit'));?>&nbsp;&nbsp;&nbsp;&nbsp;
+		</p>
+	</fieldset>
+<?php
+echo $this->form()->closeTag($form);
+?>
+<br>

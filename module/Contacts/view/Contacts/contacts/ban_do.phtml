@@ -1,0 +1,36 @@
+ <!--    Chuỗi khai báo lấy tham số của google maps   -->
+<script type="text/javascript" 
+src="http://maps.googleapis.com/maps/api/js?sensor=false&language=vi"></script>
+<script type="text/javascript">
+var map;
+function initialize() {
+      var myLatlng = new google.maps.LatLng(10.764013,106.675841);
+      var myOptions = {
+    zoom: 16,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+}
+map = new google.maps.Map(document.getElementById("div_id"), myOptions); 
+  // Biến text chứa nội dung sẽ được hiển thị
+var text;
+text= "<div style='width:250px'>" + 
+     "<img src='<?php echo $this->basepath();?>/public/img/fashion-logo.png' width='250px' height='30px'/></div>";
+   var infowindow = new google.maps.InfoWindow(
+    { content: text,
+        size: new google.maps.Size(100,50),
+        position: myLatlng
+    });
+       infowindow.open(map);    
+    var marker = new google.maps.Marker({
+      position: myLatlng, 
+      map: map,
+      title:"TTTH Đại học KHTN"
+  });
+}
+window.onload=initialize;
+</script>
+<!--<body onLoad="initialize()">
+hien thi -->  
+<div id="div_id" style="height:500px; width:750px" align="center"></div>
+
+
