@@ -10,16 +10,18 @@
 return array(
 	'router' => array(
         'routes' => array(       
-                    'product' => array(
+                    'cart' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/product[/:action][/:id]',
+                            'route'    => '/cart[/:action][/:id][/:sl][/:dg]',
                             'constraints' => array(
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            	'id'     => '[0-9]*'
+                            	'id'     => '[0-9]*',
+                            	'sl'	 => '[0-9]*',
+                            	'dg'	 => '[0-9]*',
                             ),
                             'defaults' => array(
-                            	'controller' => 'Products\Controller\Products',
+                            	'controller' => 'Cart\Controller\Cart',
                             	'action'     => 'index',                            	
                             ),
                         ),
@@ -28,7 +30,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Products\Controller\Products' => 'Products\Controller\ProductsController',
+            'Cart\Controller\Cart' => 'Cart\Controller\CartController',
         ),
     ),
     'view_manager' => array(

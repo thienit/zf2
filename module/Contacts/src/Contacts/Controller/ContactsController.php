@@ -37,7 +37,8 @@ class ContactsController extends AbstractActionController
 		$form = new ContactsForm();
 		
 		
-		$text = new MimePart($data['content']);
+		//$text = new MimePart($data['content']);
+		$text = new MimePart("Mail mail");
 		$text->type = "text/plain";
 		$html = new MimePart("<i>Hom nay hoc gui mail</i>");
 		$html->type = "text/html";

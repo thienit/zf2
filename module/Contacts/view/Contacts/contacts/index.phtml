@@ -23,7 +23,7 @@
 </style>
 
 <?php
-	require_once('ban_do.phtml');
+	require_once('map.phtml');
 ?>
 <br>
 <h1>Contact Us</h1>
@@ -62,8 +62,8 @@ echo $this->form()->openTag($form);
 		<p><?php echo $this->formLabel($form->get('captcha'))?></p>
 		<p><?php echo $this->formCaptcha($form->get('captcha'))?></p>
 		<?php
-			$msg = $form->getMessage();
-			if(isset($msg['captcha']['badCaptcha'])
+			$msg = $form->getMessages();
+			if(isset($msg['captcha']['badCaptcha']))
 				echo "<ul><li>Sai ma xac thuc</li></ul>";
 		?>
 	</fieldset>

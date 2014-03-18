@@ -17,7 +17,7 @@ class ProductsTable extends TableGateway
 	
 	public function getProduct($id)
 	{
-		$id = (int) id;
+		$id = (int) $id;
 		$rowset = $this->tableGateway->select(array('id' => $id));
 		$row = $rowset->current();
 		if (!$row) 

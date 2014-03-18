@@ -1,0 +1,68 @@
+<script type="application/javascript">
+    $(document).ready(function() {
+            $('#button').click(function() {		
+            $.ajax({
+                    url: "<?php echo $this->url('cart',array('action'=>'insert')); ?>/" + $('#id').val() + "/" + $('#soluong').val() + "/" + $('#price').val(),
+                    type: 'POST',
+                    async : false,
+                    dataType: 'json',
+                success: function(data){
+                	alert('Giỏ hàng của bạn\nSố lượng'+data['sl']+"\nSố tiền: " + data['tt']);  
+                  // $('#so_san_pham').html('Số sản phẩm: ' + data['slp']);  
+                  // $('#so_tien').html('Số tiền: ' + formatCurrency(data['tt']) + ' vnđ'); 
+                                    
+                }
+            });
+            return false;
+            });          
+            });
+  //Định dạng số
+    function formatCurrency(num) 
+    {
+       num = num.toString().replace(/\$|\,/g,'');
+       if(isNaN(num))
+       num = "0";
+       sign = (num == (num = Math.abs(num)));
+       num = Math.floor(num*100+0.50000000001);
+       num = Math.floor(num/100).toString();
+       for (var i = 0; i < Math.floor((num.length-(1+i))/3); i++)
+       num = num.substring(0,num.length-(4*i+3))+','+
+       num.substring(num.length-(4*i+3));
+       return (((sign)?'':'-') + num);
+    }
+    </script>
+    
+<table width="98%" style="margin: 10px">
+	<tr>
+		<td width="280px"><img
+			src="<?php echo $this->basePath().'/public/img/hinh_san_pham/'. $product->image;?>"
+			width="280px" height="350px" /></td>
+		<td align="left" valign="top">
+			<h2>
+				<?php echo $product->product_name; ?>
+				<h2>
+					Giá:
+					<?php echo number_format($product->price); ?>
+					vnđ
+				</h2>
+			</h2>
+			<div style="background-color: #DDF4E6; width: 98%; margin: 5px">
+
+				<br />
+				<?php echo $product->info; ?>
+			</div> <br />
+			<div style="margin-bottom: 10px" align="center">
+				<input type="hidden" name="id" id="id" value="<?php echo $product->id?>" style="height:30px; size:40px; width:40px; text-align: center"/>
+				<input type="hidden" name="price" id="price" value="<?php echo $product->price?>" style="height:30px; size:40px; width:40px; text-align: center"/>
+				<input type="text" name="soluong" id="soluong" value="1" style="height:30px; size:40px; width:40px; text-align: center"/>
+				<input class="button" type="button" name="button" id="button" value ="Mua"/>
+			</div>
+			<div>
+				<input type="button" onClick="like(<?php echo $product->id;?>)"
+					value="like" /> <label id="love_like"> <?php echo $product->likes;?>
+				</label>
+			</div>
+		</td>
+	</tr>
+</table>
+<?php

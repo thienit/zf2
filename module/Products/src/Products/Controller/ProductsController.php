@@ -22,6 +22,13 @@ class ProductsController extends AbstractActionController
 		return $this->productsTable;
 	}
 	
+	public function chitietAction()
+	{
+		$id = $this->params()->fromRoute('id');
+		$product = $this->getProductsTable()->getProduct($id);
+		return new ViewModel(array('product'=>$product));
+	}
+	
 	public function addAction()
 	{
 		$form = new ProductsForm();
